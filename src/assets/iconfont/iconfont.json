@@ -1,0 +1,65 @@
+{
+  "id": "1529578",
+  "name": "书城",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "744101",
+      "name": "书架_选中",
+      "font_class": "shujiaxuanzhong",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "1123927",
+      "name": "分类选中",
+      "font_class": "fenlei1",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "1156524",
+      "name": "垃圾桶 删除",
+      "font_class": "shanchu",
+      "unicode": "e6c5",
+      "unicode_decimal": 59077
+    },
+    {
+      "icon_id": "3498425",
+      "name": "搜索--1",
+      "font_class": "sousuo",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "3949781",
+      "name": "扫码排行未选中",
+      "font_class": "saomapaihangweixuanzhong",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    },
+    {
+      "icon_id": "3949782",
+      "name": "扫码排行选中",
+      "font_class": "saomapaihangxuanzhong",
+      "unicode": "e637",
+      "unicode_decimal": 58935
+    },
+    {
+      "icon_id": "8541014",
+      "name": "分类-未选中",
+      "font_class": "fenlei-weixuanzhong",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "8802837",
+      "name": "书架-未选中",
+      "font_class": "shujia-weixuanzhong",
+      "unicode": "e634",
+      "unicode_decimal": 58932
+    }
+  ]
+}

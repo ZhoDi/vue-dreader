@@ -1,24 +1,16 @@
 # vue-dreader
 
-## Project setup
+## 初始化项目
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### 启动开发
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+### 构建生产
 ```
 yarn build
 ```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

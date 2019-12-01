@@ -26,25 +26,25 @@ export default {
       tabbars: [
         {
           //name路由名字,进行跳转
-          name: "/",
+          name: "bookrack",
           title: "书架",
           normal: "shujia-weixuanzhong",
           active: "shujiaxuanzhong"
         },
         {
-          name: "/category",
+          name: "category",
           title: "分类",
           normal: "fenlei-weixuanzhong",
           active: "fenlei1"
         },
         {
-          name: "/rank",
+          name: "rank",
           title: "排名",
           normal: "saomapaihangweixuanzhong",
           active: "saomapaihangxuanzhong"
         },
         {
-          name: "/search",
+          name: "search",
           title: "搜索",
           normal: "sousuo",
           active: "sousuo"

@@ -63,15 +63,13 @@
     <ul class="search-result" v-if="searchResult.length">
       <BookList v-for="book in searchResult" :book="book" :key="book._id"></BookList>
     </ul>
-    <tabbar></tabbar>
   </div>
 </template>
 
 <script>
-import tabbar from "../components/Tabbar";
-import BookList from "../components/booklist/BookList";
+import BookList from "@/components/booklist/BookList";
 import { Search, Icon, List, Cell } from "vant";
-import utlis from "../utils/utlis";
+import utlis from "@/utils/utlis";
 
 export default {
   name: "Search",
@@ -85,7 +83,6 @@ export default {
     };
   },
   components: {
-    tabbar,
     BookList,
     [Icon.name]: Icon,
     [Search.name]: Search,

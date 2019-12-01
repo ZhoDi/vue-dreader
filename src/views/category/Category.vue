@@ -1,12 +1,10 @@
 <template>
   <div>
     <h1>分类</h1>
-    <tabbar></tabbar>
   </div>
 </template>
 
 <script>
-import tabbar from "../components/Tabbar";
 
 export default {
   name: "Category",
@@ -14,7 +12,6 @@ export default {
     return {};
   },
   components: {
-    tabbar
   },
   methods: {}
 };

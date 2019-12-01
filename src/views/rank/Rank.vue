@@ -1,12 +1,10 @@
 <template>
   <div>
     <h1>排名</h1>
-    <tabbar></tabbar>
   </div>
 </template>
 
 <script>
-import tabbar from "../components/Tabbar";
 
 export default {
   name: "Rank",
@@ -14,7 +12,6 @@ export default {
     return {};
   },
   components: {
-    tabbar
   },
   methods: {}
 };

@@ -5,19 +5,33 @@ const localStroage = window.localStorage
 export default {
 
   /**
-     * 获取localstroage的数据
-     * @param {String} key 获取localstroage的item 
+     * 获取localstroage的值
+     * @param {String} name
      */
-  getLocalStroageData (item) {
-    return _.isEmpty(JSON.parse(localStroage.getItem(item))) ? null : JSON.parse(localStroage.getItem(item))
+  getLocalStroage(name) {
+    if(!name) return;
+    return _.isEmpty(JSON.parse(localStroage.getItem(name))) ? null : JSON.parse(localStroage.getItem(name))
   },
 
   /**
      * 设置localstroage的值
-     * @param {String} item 
+     * @param {String} name 
      * @param {Object} obj
      */
-  setLocalStroageData (item, obj) {
-    localStroage.setItem(item, JSON.stringify(obj))
+  setLocalStroage(name, obj) {
+    if(!name) return;
+    if(typeof obj !== 'string'){
+      obj = JSON.stringify(obj);
+    }
+    localStroage.setItem(name, obj);
+  },
+  /**
+   * 删除localstroage的值
+   * @param {string} name
+   */
+  removeLocalStroage(name) {
+    if (!name) return;
+    return localStroage.removeItem(name);
   }
+
 }

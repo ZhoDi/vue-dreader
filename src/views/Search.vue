@@ -82,8 +82,6 @@ export default {
       associationList: [],
       searchResult: [],
       searchHistory: []
-      // finished: false,
-      // loading: false
     };
   },
   components: {
@@ -102,8 +100,8 @@ export default {
    */
   created() {
     //搜索历史
-    this.searchHistory = utlis.localstorage.getLocalStroageData("searchHistory")
-      ? utlis.localstorage.getLocalStroageData("searchHistory")
+    this.searchHistory = utlis.localstorage.getLocalStroage("searchHistory")
+      ? utlis.localstorage.getLocalStroage("searchHistory")
       : [];
     //获取热词
     this.$api.search
@@ -126,10 +124,10 @@ export default {
         this.associationList = [];
         //清空搜索结果
         this.searchResult = [];
-        this.searchHistory = utlis.localstorage.getLocalStroageData(
+        this.searchHistory = utlis.localstorage.getLocalStroage(
           "searchHistory"
         )
-          ? utlis.localstorage.getLocalStroageData("searchHistory")
+          ? utlis.localstorage.getLocalStroage("searchHistory")
           : [];
       }
     }
@@ -166,10 +164,10 @@ export default {
       this.searchWord = event.target ? event.target.innerText : this.searchWord;
       
       // 获取搜索历史
-      let searchHistory = utlis.localstorage.getLocalStroageData(
+      let searchHistory = utlis.localstorage.getLocalStroage(
         "searchHistory"
       )
-        ? utlis.localstorage.getLocalStroageData("searchHistory")
+        ? utlis.localstorage.getLocalStroage("searchHistory")
         : [];
 
       //新搜索历史
@@ -183,7 +181,7 @@ export default {
       }
       
       //保存搜索历史
-      utlis.localstorage.setLocalStroageData("searchHistory", newHistorys);
+      utlis.localstorage.setLocalStroage("searchHistory", newHistorys);
       // this.$store.commit(SET_BACK_POSITION, '搜索');
       //开始搜索
       this.$api.search
@@ -200,7 +198,7 @@ export default {
      * 清空搜索历史
      */
     clearSearchHistory() {
-      utlis.localstorage.setLocalStroageData("searchHistory", []);
+      utlis.localstorage.setLocalStroage("searchHistory", []);
       this.searchHistory = [];
     }
   }

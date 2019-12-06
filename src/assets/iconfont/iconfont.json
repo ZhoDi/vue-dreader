@@ -6,11 +6,11 @@
   "description": "",
   "glyphs": [
     {
-      "icon_id": "744101",
-      "name": "书架_选中",
-      "font_class": "shujiaxuanzhong",
-      "unicode": "e613",
-      "unicode_decimal": 58899
+      "icon_id": "382414",
+      "name": "书架",
+      "font_class": "shujia2",
+      "unicode": "e603",
+      "unicode_decimal": 58883
     },
     {
       "icon_id": "1123927",
@@ -48,6 +48,34 @@
       "unicode_decimal": 58935
     },
     {
+      "icon_id": "5169051",
+      "name": "星星",
+      "font_class": "xingxing-active",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "5238976",
+      "name": "铅笔",
+      "font_class": "pan_icon-copy",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "6487636",
+      "name": "书架",
+      "font_class": "stake-copy-copy",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "6880620",
+      "name": "消息",
+      "font_class": "xiaoxi",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
       "icon_id": "8541014",
       "name": "分类-未选中",
       "font_class": "fenlei-weixuanzhong",
@@ -55,11 +83,18 @@
       "unicode_decimal": 58898
     },
     {
-      "icon_id": "8802837",
-      "name": "书架-未选中",
-      "font_class": "shujia-weixuanzhong",
-      "unicode": "e634",
-      "unicode_decimal": 58932
+      "icon_id": "8752208",
+      "name": "历史",
+      "font_class": "lishi",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "12106044",
+      "name": "星星",
+      "font_class": "xingxing-normal",
+      "unicode": "e6c6",
+      "unicode_decimal": 59078
     }
   ]
 }

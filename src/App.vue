@@ -13,7 +13,8 @@ export default {
 
 
 <style>
-html,body {
+html,
+body {
   font-size: 20px;
 }
 
@@ -34,15 +35,16 @@ li {
 }
 
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+    "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* display: flex;
   flex-direction: column; */
   /* justify-content: space-between;
   align-items: stretch; */
-  color: #2c3e50;
-  background-color: #fafafa;
+  color: #000;
+  background-color: #fff;
   font-size: 0.8rem;
   width: 100vw;
   height: 100vh;

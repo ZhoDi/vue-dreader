@@ -4,6 +4,7 @@ import BookRack from '@/views/bookrack/BookRack/'
 import Category from '@/views/category/Category'
 import Rank from '@/views/rank/Rank'
 import Search from '@/views/search/Search'
+import BookInfo from '@/components/BookInfo'
 import Home from '@/views/home/Home'
 
 Vue.use(VueRouter)
@@ -47,8 +48,15 @@ const routes = [
         },
       }
     ]
+  },
+  {
+    path:'/book/:bookId',
+    name:'book',
+    component:BookInfo,
+    meta:{
+      keepAlive:false
+    }
   }
-
 ]
 
 const router = new VueRouter({

@@ -8,20 +8,20 @@
         maxlength="20"
         shape="round"
         @search="fuzzySearch"
-        @input="associationSearch"
+        @input="autoComplete"
       />
       <!-- 联想输入 (用户输入后显示,回车后消失)-->
       <van-list
         v-model="loading"
         :finished="finished"
         :immediate-check="false"
-        @load="associationSearch"
-        v-if="associationList.length"
+        @load="autoComplete"
+        v-if="autoCompleteList.length"
       >
         <van-cell
-          v-for="(item,index) in associationList"
+          v-for="(item,index) in autoCompleteList"
           :key="index"
-          :title="item"
+          :title="item.text"
           @click="fuzzySearch"
         />
       </van-list>
@@ -35,7 +35,7 @@
           v-for="(searchKeyWord, index) in searchHotWords"
           :key="index"
           @click="fuzzySearch"
-        >{{searchKeyWord.word}}</li>
+        >{{searchKeyWord}}</li>
       </ul>
       <!-- 搜索历史 -->
       <div class="search-history">
@@ -54,7 +54,10 @@
             v-for="(item,index) in searchHistory"
             :key="index"
             @click="fuzzySearch"
-          >{{item}}</li>
+          >
+            <van-icon class="iconfont" class-prefix="icon" name="lishi" />
+            {{item}}
+          </li>
         </ul>
       </div>
     </div>
@@ -67,7 +70,7 @@
 </template>
 
 <script>
-import BookList from "@/components/booklist/BookList";
+import BookList from "@/components/BookList";
 import { Search, Icon, List, Cell } from "vant";
 import utlis from "@/utils/utlis";
 
@@ -77,9 +80,13 @@ export default {
     return {
       searchWord: "",
       searchHotWords: null,
-      associationList: [],
+      autoCompleteList: [],
       searchResult: [],
-      searchHistory: []
+      searchHistory: [],
+      start: 0,
+      limit: 50,
+      loading: false,
+      finished: false
     };
   },
   components: {
@@ -89,8 +96,8 @@ export default {
     [List.name]: List,
     [Cell.name]: Cell
   },
-  mounted (){
-    window.addEventListener('scroll', this.handleScroll)
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
   },
   /**
    * 初始化
@@ -104,9 +111,10 @@ export default {
     this.$api.search
       .getKeyWords()
       .then(response => {
-        this.searchHotWords = response.data.searchHotWords;
-        //显示16个热词
-        this.searchHotWords.length = 16;
+        this.searchHotWords = response.data.hotWords;
+
+        //显示14个热词
+        this.searchHotWords.length = 14;
       })
       .catch(err => {
         console.log(err);
@@ -118,33 +126,34 @@ export default {
       //搜索词为空-刷新当前搜索历史(避免频繁赋值)
       if (!this.searchWord) {
         //清空搜索联想
-        this.associationList = [];
+        this.autoCompleteList = [];
         //清空搜索结果
         this.searchResult = [];
-        this.searchHistory = utlis.localstorage.getLocalStroage(
-          "searchHistory"
-        )
+        this.searchHistory = utlis.localstorage.getLocalStroage("searchHistory")
           ? utlis.localstorage.getLocalStroage("searchHistory")
           : [];
       }
     }
   },
   methods: {
-    handleScroll(){
-      this.associationList = [];
+    handleScroll() {
+      this.autoCompleteList = [];
     },
     /**
      * 搜索联想
      */
-    associationSearch() {
+    autoComplete() {
+      if (this.searchWord === "") {
+        return;
+      }
       this.$api.search
-        .associationSearch(this.searchWord)
+        .autoComplete(this.searchWord)
         .then(response => {
-          this.associationList = response.data.keywords;
+          this.autoCompleteList = response.data.keywords;
           //加载状态结束
           this.loading = false;
           // 数据全部加载完成
-          if (this.associationList.length >= 0) {
+          if (this.autoCompleteList.length >= 0) {
             this.finished = true;
           }
         })
@@ -158,16 +167,16 @@ export default {
      */
     fuzzySearch(event) {
       //本次搜索词
-      this.searchWord = event.target ? event.target.innerText : this.searchWord;
-      
+      this.searchWord = (event.target
+        ? event.target.innerText
+        : this.searchWord
+      ).trim();
       // 获取搜索历史
-      let searchHistory = utlis.localstorage.getLocalStroage(
-        "searchHistory"
-      )
+      let searchHistory = utlis.localstorage.getLocalStroage("searchHistory")
         ? utlis.localstorage.getLocalStroage("searchHistory")
         : [];
 
-      //新搜索历史
+      //新搜索历史,使用Set去重
       let newHistorys = Array.from(
         new Set([this.searchWord, ...searchHistory])
       );
@@ -176,16 +185,16 @@ export default {
       if (newHistorys.length > 8) {
         newHistorys = newHistorys.slice(0, 7);
       }
-      
+
       //保存搜索历史
       utlis.localstorage.setLocalStroage("searchHistory", newHistorys);
       // this.$store.commit(SET_BACK_POSITION, '搜索');
       //开始搜索
       this.$api.search
-        .fuzzySearch(this.searchWord)
+        .fuzzySearch(this.searchWord, this.start, this.limit)
         .then(response => {
           this.searchResult = response.data.books;
-          this.associationList = [];
+          this.autoCompleteList = [];
         })
         .catch(err => {
           console.log(err);
@@ -255,12 +264,11 @@ export default {
   margin-left: 0.8rem;
   margin-right: 0.8rem;
   font-size: 0.7rem;
-  color: #a79393;
+  color: #7e7e7e;
   /* border-bottom: #eee solid 1px; */
 }
 .search-result {
   margin-bottom: 3rem;
   width: 100vw;
-  background: #f2f2f2;
 }
 </style>

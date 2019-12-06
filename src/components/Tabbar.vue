@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-tabbar v-model="selected" active-color="#1989fa" inactive-color="#7d7e80" >
+    <van-tabbar v-model="selected" active-color="#EE0A24" inactive-color="#2c2d2f" >
       <van-tabbar-item v-for="(item,index) in tabbars" :key="index" :name="item.title" :to="(item.name)">
         <van-icon
           class="iconfont"
@@ -28,8 +28,8 @@ export default {
           //name路由名字,进行跳转
           name: "bookrack",
           title: "书架",
-          normal: "shujia-weixuanzhong",
-          active: "shujiaxuanzhong"
+          normal: "shujia2",
+          active: "stake-copy-copy"
         },
         {
           name: "category",
